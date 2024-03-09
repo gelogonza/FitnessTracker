@@ -1,14 +1,12 @@
 #include "FitnessTracker.h"
 #include <iostream>
 
-// Add a User to the FitnessTracker
 void FitnessTracker::addUser(User* user) {
     users.push_back(user);
+    std::cout << "User added: " << user->name << std::endl;
 }
 
-// Track an activity for a user
 void FitnessTracker::trackActivity(User* user, const ActivityLog& activity) {
-    // Assuming User class has a method to add an ActivityLog to its activity logs
     for (auto& usr : users) {
         if (usr == user) {
             usr->addActivity(activity);
@@ -19,9 +17,7 @@ void FitnessTracker::trackActivity(User* user, const ActivityLog& activity) {
     std::cout << "User not found." << std::endl;
 }
 
-// Set a goal for a user
 void FitnessTracker::setGoal(User* user, Goal* goal) {
-    // Assuming User class has a method to add a Goal to its goals
     for (auto& usr : users) {
         if (usr == user) {
             usr->addGoal(goal);
@@ -32,12 +28,31 @@ void FitnessTracker::setGoal(User* user, Goal* goal) {
     std::cout << "User not found." << std::endl;
 }
 
-// Placeholder for monitoring progress
 void FitnessTracker::monitorProgress(User* user) {
-    // Future implementation
+    std::cout << "Progress for " << user->name << ":\n";
+    // Example: Calculate total distance covered in all running activities
+    double totalDistance = 0;
+    for (const auto& activity : user->activities) {
+        if (activity.typeOfActivity == "Running") {
+            totalDistance += activity.distance; // Assuming distance is a member of ActivityLog
+        }
+    }
+    std::cout << "Total Running Distance: " << totalDistance << " km\n";
+    // Additional calculations and comparisons to goals can be done here
 }
 
-// Placeholder for providing insights
 void FitnessTracker::provideInsights(User* user) {
-    // Future implementation
+    std::cout << "Insights for " << user->name << ":\n";
+    // Example: Suggest more rest if high-intensity activities are frequent
+    int highIntensityCount = 0;
+    for (const auto& activity : user->activities) {
+        if (activity.intensity == "High") {
+            highIntensityCount++;
+        }
+    }
+    if (highIntensityCount > 5) { // Arbitrary threshold
+        std::cout << "Consider more rest days to prevent burnout.\n";
+    }
+    // More personalized insights based on activity patterns can be provided here
 }
+
