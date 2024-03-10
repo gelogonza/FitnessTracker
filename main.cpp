@@ -42,7 +42,6 @@ void logActivity(FitnessTracker& tracker, User* currentUser) {
 void setGoal(FitnessTracker& tracker, User* currentUser) {
     double targetWeight;
     int targetStepCount, targetWorkoutFrequency;
-    // Assuming goals can be weight, step count, and workout frequency for simplicity
 
     std::cout << "Enter target weight (kg): ";
     std::cin >> targetWeight;
@@ -59,10 +58,10 @@ void setGoal(FitnessTracker& tracker, User* currentUser) {
 
 void viewProgress(const User& user) {
     double totalCaloriesBurned = 0.0;
-    double totalWeightChange = user.initialWeight - user.currentWeight; // Assume these properties exist
+    double totalWeightChange = user.initialWeight - user.currentWeight; 
     // Calculate total calories burned from activities
     for (const auto& activity : user.activities) {
-        totalCaloriesBurned += activity.caloriesBurned; // Assume caloriesBurned is a property of ActivityLog
+        totalCaloriesBurned += activity.caloriesBurned; 
     }
 
     std::cout << "Progress Report for " << user.name << ":\n";
@@ -94,23 +93,29 @@ void viewProgress(const User& user) {
 
 int main() {
     FitnessTracker tracker;
+    tracker.loadUsers("userdata.txt"); 
     bool runApp = true;
+
+    User* currentUser = nullptr; // Pointer to store the selected user
 
     while (runApp) {
         displayMainMenu();
         int selection = getUserSelection();
 
         switch (selection) {
-            case 1:
-                logActivity(tracker);
+            case 1: // Log Activity
+                if (!currentUser) currentUser = tracker.selectUser(); // Ensure a user is selected
+                if (currentUser) logActivity(tracker, currentUser);
                 break;
-            case 2:
-                setGoal(tracker);
+            case 2: // Set Goal
+                if (!currentUser) currentUser = tracker.selectUser(); // Ensure a user is selected
+                if (currentUser) setGoal(tracker, currentUser);
                 break;
-            case 3:
-                viewProgress(tracker);
+            case 3: // View Progress
+                if (!currentUser) currentUser = tracker.selectUser(); // Ensure a user is selected
+                if (currentUser) viewProgress(*currentUser); 
                 break;
-            case 4:
+            case 4: // Exiting application
                 std::cout << "Exiting application.\n";
                 runApp = false;
                 break;

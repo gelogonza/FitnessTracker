@@ -3,9 +3,8 @@
 
 #include <string>
 #include <vector>
-#include "ActivityLog.h" // Include if ActivityLog is used within User
-#include "Goal.h"        // Include if Goal is used within User
-
+#include "Activitylog.h" 
+#include "Goal.h"        
 class User {
 public:
     std::string name;
@@ -18,7 +17,7 @@ public:
     User(std::string name, int age, double initialWeight);
     void addActivity(const ActivityLog& activity);
     void addGoal(Goal* goal);
-    void updateWeight(double newWeight); // Method to update current weight
+    void updateWeight(double newWeight); 
 };
 
 #endif // USER_H

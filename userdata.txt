@@ -1,0 +1,5 @@
+John Smith,25,160
+Jane Doe,25,120
+Duke Dennis,30,170
+Bob Ross,50,150
+Angelo Gonzalez,22,190
