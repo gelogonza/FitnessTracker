@@ -84,22 +84,3 @@ g++ FitnessTrackerMain.cpp -o FitnessTracker
 ```bash
 ./FitnessTracker
 ```
-
----
-
-## Future Improvements
-1. **Data Persistence**: Enable saving updates to `userdata.txt` for persistent storage.
-2. **Enhanced Reporting**: Add graphical progress visualization.
-3. **Activity Types**: Expand the list of predefined activities and allow custom activity creation.
-4. **Mobile Integration**: Create a mobile app for on-the-go tracking.
-
----
-
-## Author
-**[Your Name]**  
-_Last Updated_: [Date]  
-_For questions or improvements, feel free to contribute._  
-
----
-
-Start achieving your fitness goals today with the Fitness Tracker and Goal Setter! 💪
